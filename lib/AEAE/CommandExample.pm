@@ -1,8 +1,21 @@
 package AEAE::CommandExample ;
 
 use Carp;
-
 use base qw/AEAE::Command/;
+
+use strict ;
+
+=head1 NAME
+    
+AEAE::CommandExample - A command to test the module.
+
+=cut
+
+=head2 new
+
+Returns a new instance of this command.
+
+=cut
 
 sub new{
     my ($class) = shift ;
@@ -14,6 +27,11 @@ sub new{
 
 
 
+=head2 _doItReal
+
+Actually do something useless.
+
+=cut
 
 sub _doItReal{
     my $self = shift ;
@@ -34,6 +52,11 @@ sub _doItReal{
     print "Now its over!\n";
 }
 
+=head2 _killHandler
+
+Last words ...
+
+=cut
 
 sub _killHandler{
     my ($self) = @_;

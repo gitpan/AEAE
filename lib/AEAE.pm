@@ -9,17 +9,21 @@ AEAE - the Ajax Enhanced Asynchroneous Experience.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
 This module enables you to quickly implement long duration task at server side
 while allowing the user to control those task at client side with an ajaxed page
 showing a progress bar and control button.
+
+=head1 SCREENSHOTS
+
+http://jerome.eteve.free.fr/article.php3?id_article=26
 
 =head1 COMPATIBILITY
 

@@ -6,7 +6,7 @@ AEAE::Command - a base class for an asynchroneous command.
 
 =head1 AUTHOR
 
-jerome.eteve@it-omics.com
+jerome@eteve.net
 
 =head1 SYNOPSIS
 
@@ -196,6 +196,11 @@ sub done{
 }
 
 
+=head2 lock
+
+Internal use.
+
+=cut
 
 sub lock{
     my ($self) = @_ ;
@@ -206,6 +211,12 @@ sub lock{
     close F ;
 }
 
+=head2 unlock
+
+Internal use.
+
+=cut
+
 sub unlock{
     my ($self) = @_ ;
     if ( ! $self->isLocked() ){
@@ -214,6 +225,12 @@ sub unlock{
     unlink $self->dir()."lock" ;
 }
 
+
+=head2 isFake
+
+Returns false if the command is a real one.
+
+=cut
 
 sub isFake{
     my ($self) = @_ ;
@@ -235,6 +252,12 @@ sub oneStep{
 }
 
 
+=head2 setError
+
+Internal use.
+
+=cut
+
 sub setError{
     my ($self, $error) = @_ ;
     
@@ -246,6 +269,13 @@ sub setError{
     close F ;
     
 }
+
+=head2 getError
+
+If an error occurred, return the associated message.
+Otherwise, return an empty string.
+
+=cut
 
 sub getError{
     my ($self , $error ) = @_ ;
@@ -260,6 +290,12 @@ sub getError{
     return $err;
 }
 
+
+=head2 checkStep
+
+Returns the step where the command is, between 0 and 100.
+
+=cut
 
 sub checkStep{
     my ($self) = @_ ;
@@ -286,6 +322,12 @@ sub suicide{
     return $self->getSTDOUT();
 }
 
+
+=head2 doIt
+
+Safely execute the nested _doItReal method.
+
+=cut
 
 sub doIt{
     my $self = shift ;
@@ -404,6 +446,13 @@ sub _killHandler{
     # Nothing by default.
 }
 
+
+=head2 clean
+
+Cleans the system ressources associated with this command.
+Implieds the command is done. Otherwise do nothing.
+
+=cut
 
 sub clean{
     my ($self ) = @_ ;
